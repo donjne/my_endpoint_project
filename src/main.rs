@@ -19,11 +19,12 @@ struct ResponseData {
     status_code: u16,
 }
 
-#[get("/api?<slack_name>&<track>")]
+#[get("/api?slack_name=DaviesPeeks&track=backend")]
+
 fn get_data(slack_name: String, track: String) -> status::Custom<Json<ResponseData>> {
     let current_day = Utc::now().format("%A").to_string();
     let utc_time = Utc::now().to_string();
-    let github_file_url = "https://github.com/username/repo/blob/main/file_name.ext".to_string();
+    let github_file_url = "https://github.com/donjne/my_endpoint_project/blob/master/src/main.rs".to_string();
     let github_repo_url = "https://github.com/username/repo".to_string();
 
     let response_data = ResponseData {
